@@ -24,9 +24,23 @@ func _physics_process(delta: float) -> void:
 	
 	_update_anim(dir)
 	
-func _update_anim(dir: float) -> void
+func _update_anim(dir: float) -> void:
 	#flip sprite to correspond to movement direction
-	if dir != 0.0:
-			anim.flip
-	
+	if dir != 0.0: 
+		anim.flip_h = dir < 0.0
+		
+	# animation state
+	if not is_on_floor():
+		if anim.sprite_frames.has.animation("jump"):
+			_play_if_needed("jump")
+			else:
+				_play_if_needed("walk")
+		else:
+			
+			
+			
+			
+func _play_if_needed(name: String) -> void:
+	if anim.animation != name:
+		anim.play(name)			
 	
