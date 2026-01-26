@@ -33,13 +33,14 @@ func _update_anim(dir: float) -> void:
 	if not is_on_floor():
 		if anim.sprite_frames.has.animation("jump"):
 			_play_if_needed("jump")
-			else:
-				_play_if_needed("walk")
 		else:
-			
-			
-			
-			
+			_play_if_needed("walk")
+	else:
+		if abs(dir) > 0.01:
+			_play_if_needed("walk")
+		else:
+			_play_if_needed("idle")
+						
 func _play_if_needed(name: String) -> void:
 	if anim.animation != name:
 		anim.play(name)			
