@@ -259,7 +259,7 @@ script = ExtResource("1_hukh1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_1rndv")
 animation = &"idle"
-frame_progress = 0.51145786
+frame_progress = 0.6004116
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -0.5)

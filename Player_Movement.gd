@@ -25,23 +25,29 @@ func _physics_process(delta: float) -> void:
 	_update_anim(dir)
 	
 func _update_anim(dir: float) -> void:
+	if anim == null:
+		return 
+	
+	var frames := anim.sprite_frames
+	if frames == null:
+		return 
+		
 	#flip sprite to correspond to movement direction
 	if dir != 0.0: 
 		anim.flip_h = dir < 0.0
 		
-	# animation state
-	if not is_on_floor():
-		if anim.sprite_frames.has.animation("jump"):
-			_play_if_needed("jump")
-		else:
-			_play_if_needed("walk")
-	else:
-		if abs(dir) > 0.01:
-			_play_if_needed("walk")
-		else:
-			_play_if_needed("idle")
-						
-func _play_if_needed(name: String) -> void:
-	if anim.animation != name:
-		anim.play(name)			
+	# animation state (chooses correct animation)
+	var target := "idle"
 	
+	if not is_on_floor():
+		if frames.has_connections("jump"):
+			target = "jump"
+		else:
+			target = "walk"
+	elif abs(dir) > 0.01:
+		target = "walk"
+		
+	# PLay if available
+	if frames.has_animation(target) and anim.animation != target:
+		anim.play(target)
+		
