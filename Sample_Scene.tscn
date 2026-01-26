@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://c6xnf7a2c3a4i"]
+[gd_scene load_steps=24 format=4 uid="uid://c6xnf7a2c3a4i"]
 
 [ext_resource type="Texture2D" uid="uid://d4igqwd36b3tk" path="res://Assets/Sprites/Environment/enviornment_tiles.png" id="1_cnyu5"]
+[ext_resource type="Script" uid="uid://olgq1jurnyuh" path="res://Player_Movement.gd" id="1_hukh1"]
 [ext_resource type="Texture2D" uid="uid://cxtcyo22ktw38" path="res://Assets/Sprites/Player/cowboy_sheet.png" id="1_pwygt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hukh1"]
@@ -255,15 +256,16 @@ pattern_2 = SubResource("TileMapPattern_hukh1")
 position = Vector2(575, 325)
 scale = Vector2(0.20000488, -0.31999886)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(140, 615)
+script = ExtResource("1_hukh1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_1rndv")
 animation = &"Idle"
-frame_progress = 0.11191014
+frame_progress = 0.78189933
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_os7e2")
 
