@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cam: Camera2D = $Camera2D
 
+var frozen: bool = false
+
 func _ready() -> void:
 	# camera follow and zoom for character
 	cam.enabled = true
@@ -38,6 +40,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	_update_anim(dir)
+	
+	if frozen:
+		velocity = Vector2.ZERO
+		MOVE_SPEED = 0
+		JUMP_VELOCITY = 0
+		move_and_slide()
+		anim.play("idle")
+		return
 	
 func _update_anim(dir: float) -> void:
 	if anim == null:
@@ -66,3 +76,7 @@ func _update_anim(dir: float) -> void:
 	if frames.has_animation(target) and anim.animation != target:
 		anim.play(target)
 		
+		
+func freeze() -> void:
+	frozen = true
+	velocity = Vector2.ZERO
