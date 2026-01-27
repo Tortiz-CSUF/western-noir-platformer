@@ -1,7 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+# Movement Variables 
+@export var MOVE_SPEED = 300.0
+@export var JUMP_VELOCITY = -400.0
+
+# Camera Variables 
+@export var CAMERA_ZOOM: Vector2 = Vector2(3, 3)
+@export var CAMERA_SMOOTH_SPEED: float = 8.0
 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -10,9 +15,9 @@ const JUMP_VELOCITY = -400.0
 func _ready() -> void:
 	# camera follow and zoom for character
 	cam.enabled = true
-	cam.zoom = Vector2(3,3)
+	cam.zoom = CAMERA_ZOOM
 	cam.position_smoothing_enabled = true
-	cam.position_smoothing_speed = 8.0
+	cam.position_smoothing_speed = CAMERA_SMOOTH_SPEED
 	
 	
 
@@ -28,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 	# Horizontal movement
 	var dir := Input.get_axis("move_left", "move_right")
-	velocity.x = dir * SPEED
+	velocity.x = dir * MOVE_SPEED
 	
 	move_and_slide()
 	
