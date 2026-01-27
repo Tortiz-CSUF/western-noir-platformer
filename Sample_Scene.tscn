@@ -299,7 +299,7 @@ modulate = Color(0.6496355, 0.14162233, 1.92523e-07, 1)
 position = Vector2(176, 579)
 script = ExtResource("3_l2alr")
 UI_PATH = NodePath("../ClearanceUI")
-PLAYER_GROUP = "player"
+PLAYER_PATH = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="MoonGoal"]
 texture = ExtResource("1_cnyu5")
