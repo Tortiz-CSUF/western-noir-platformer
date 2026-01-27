@@ -55,7 +55,7 @@ func _update_anim(dir: float) -> void:
 	var target := "idle"
 	
 	if not is_on_floor():
-		if frames.has_connections("jump"):
+		if frames.has_animation("jump"):
 			target = "jump"
 		else:
 			target = "walk"
