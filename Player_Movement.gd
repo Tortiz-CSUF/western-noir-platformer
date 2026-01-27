@@ -3,8 +3,18 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cam: Camera2D = $Camera2D
+
+func _ready() -> void:
+	# camera follow and zoom for character
+	cam.enabled = true
+	cam.zoom = Vector2(3,3)
+	cam.position_smoothing_enabled = true
+	cam.position_smoothing_speed = 8.0
+	
+	
 
 
 func _physics_process(delta: float) -> void:
