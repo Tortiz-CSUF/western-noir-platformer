@@ -311,4 +311,31 @@ region_rect = Rect2(112, 208, 16, 16)
 modulate = Color(0, 0.26395524, 0.26406488, 1)
 shape = SubResource("CircleShape2D_hukh1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ClearanceUI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="ClearanceUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ClearanceUI/Panel"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ClearanceUI/Panel/MarginContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Level Clear!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
