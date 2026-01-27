@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c6xnf7a2c3a4i"]
+[gd_scene load_steps=28 format=4 uid="uid://c6xnf7a2c3a4i"]
 
 [ext_resource type="Texture2D" uid="uid://d4igqwd36b3tk" path="res://Assets/Sprites/Environment/enviornment_tiles.png" id="1_cnyu5"]
 [ext_resource type="Script" uid="uid://olgq1jurnyuh" path="res://Player_Movement.gd" id="1_hukh1"]
@@ -257,6 +257,20 @@ pattern_2 = SubResource("TileMapPattern_hukh1")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hukh1"]
 size = Vector2(35, 249.5)
 
+[sub_resource type="GDScript" id="GDScript_l2alr"]
+script/source = "extends CanvasLayer
+
+@onready var panel: Panel = $Panel
+@onready var label: Label = $Panel/MarginContainer/Label
+
+func _ready() -> void:
+	panel.visible = false
+	
+func show_message(text: String) -> void:
+	label.text = text
+	panel.visible = true
+"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -282,11 +296,10 @@ scale = Vector2(0.20000488, -0.31999886)
 
 [node name="MoonGoal" type="Area2D" parent="."]
 modulate = Color(0.6496355, 0.14162233, 1.92523e-07, 1)
-position = Vector2(1092, 470)
+position = Vector2(176, 579)
 script = ExtResource("3_l2alr")
-CLEARANCE_MESSAGE = null
-UI_PATH = null
-PLAYER_GROUP = null
+UI_PATH = NodePath("../ClearanceUI")
+PLAYER_GROUP = "player"
 
 [node name="Sprite2D" type="Sprite2D" parent="MoonGoal"]
 texture = ExtResource("1_cnyu5")
@@ -317,6 +330,7 @@ position = Vector2(-21, -59.25)
 shape = SubResource("RectangleShape2D_hukh1")
 
 [node name="ClearanceUI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_l2alr")
 
 [node name="Panel" type="Panel" parent="ClearanceUI"]
 anchors_preset = 15

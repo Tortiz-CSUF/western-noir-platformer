@@ -16,8 +16,11 @@ func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group(PLAYER_GROUP):
 		return
 		
-# Stop player movement to dislay UI
-if body.has_method("freeze"):
-	body.freeze()
+	# Stop player movement to dislay UI
+	if body.has_method("freeze"):
+		body.freeze()
 	
-var ui :=
+	# Display Clearance UI
+	var ui := get_node_or_null(UI_PATH)
+	if ui != null:
+		ui.show_message(CLEARANCE_MESSAGE)
