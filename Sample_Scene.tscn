@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=4 uid="uid://c6xnf7a2c3a4i"]
+[gd_scene load_steps=27 format=4 uid="uid://c6xnf7a2c3a4i"]
 
 [ext_resource type="Texture2D" uid="uid://d4igqwd36b3tk" path="res://Assets/Sprites/Environment/enviornment_tiles.png" id="1_cnyu5"]
 [ext_resource type="Script" uid="uid://olgq1jurnyuh" path="res://Player_Movement.gd" id="1_hukh1"]
 [ext_resource type="Texture2D" uid="uid://cxtcyo22ktw38" path="res://Assets/Sprites/Player/cowboy_sheet.png" id="1_pwygt"]
+[ext_resource type="Script" uid="uid://c43py34vrwskl" path="res://moon_goal.gd" id="3_l2alr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hukh1"]
 atlas = ExtResource("1_pwygt")
@@ -108,6 +109,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_os7e2"]
 size = Vector2(8, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hukh1"]
+radius = 8.0
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cnyu5"]
 tile_data = PackedInt32Array(0, 327680, 13, 196608, 327680, 13, 393216, 851968, 13, 65537, 196608, 13, 262145, 327680, 13, 65538, 851968, 13, 131074, 65536, 13, 393218, 720896, 13, 131075, 327680, 13, 262147, 851968, 13, 327683, 589824, 13, 4, 720896, 13, 196612, 589824, 13, 393220, 851968, 13, 65541, 851968, 13, 196614, 851968, 13, 327686, 65536, 13, 131079, 327680, 13, 262151, 327680, 13, 393223, 327680, 13, 8, 327680, 13, 131080, 196608, 13, 327689, 851968, 13, 10, 196608, 13, 196618, 720896, 13, 262154, 327680, 13, 393226, 589824, 13)
@@ -253,9 +257,6 @@ pattern_2 = SubResource("TileMapPattern_hukh1")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hukh1"]
 size = Vector2(35, 249.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hukh1"]
-radius = 8.0
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -279,6 +280,23 @@ shape = SubResource("RectangleShape2D_os7e2")
 position = Vector2(1, -1.999999)
 scale = Vector2(0.20000488, -0.31999886)
 
+[node name="MoonGoal" type="Area2D" parent="."]
+modulate = Color(0.6496355, 0.14162233, 1.92523e-07, 1)
+position = Vector2(1092, 470)
+script = ExtResource("3_l2alr")
+CLEARANCE_MESSAGE = null
+UI_PATH = null
+PLAYER_GROUP = null
+
+[node name="Sprite2D" type="Sprite2D" parent="MoonGoal"]
+texture = ExtResource("1_cnyu5")
+region_enabled = true
+region_rect = Rect2(112, 208, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonGoal"]
+modulate = Color(0, 0.26395524, 0.26406488, 1)
+shape = SubResource("CircleShape2D_hukh1")
+
 [node name="Environment" type="Node" parent="."]
 
 [node name="Background Layer" type="TileMapLayer" parent="Environment"]
@@ -297,19 +315,6 @@ position = Vector2(21, 585)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Boundary Wall"]
 position = Vector2(-21, -59.25)
 shape = SubResource("RectangleShape2D_hukh1")
-
-[node name="MoonGoal" type="Area2D" parent="."]
-modulate = Color(0.6496355, 0.14162233, 1.92523e-07, 1)
-position = Vector2(1092, 470)
-
-[node name="Sprite2D" type="Sprite2D" parent="MoonGoal"]
-texture = ExtResource("1_cnyu5")
-region_enabled = true
-region_rect = Rect2(112, 208, 16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonGoal"]
-modulate = Color(0, 0.26395524, 0.26406488, 1)
-shape = SubResource("CircleShape2D_hukh1")
 
 [node name="ClearanceUI" type="CanvasLayer" parent="."]
 
@@ -335,7 +340,6 @@ grow_vertical = 2
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Level Clear!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
