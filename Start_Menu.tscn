@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://blr4bmpnlswj5"]
+[gd_scene load_steps=7 format=3 uid="uid://blr4bmpnlswj5"]
 
 [ext_resource type="FontFile" uid="uid://m8luhfimbqq4" path="res://Assets/Fonts/PixelWesternRegular-8g70.ttf" id="1_wrxjg"]
+[ext_resource type="Script" uid="uid://dbx72d0kt65l3" path="res://start_menu.gd" id="1_xcwll"]
 [ext_resource type="FontFile" uid="uid://ccrhyowxoc31a" path="res://Assets/Fonts/SpeedPxWatch-xRM4O.ttf" id="2_pbjr1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbjr1"]
@@ -31,8 +32,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xcwll")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.23394097
@@ -57,7 +59,7 @@ anchor_bottom = 0.7962963
 theme_override_constants/separation = 15
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Start_Game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 7
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -69,7 +71,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xcwll")
 text = "Start Game"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Exit_Game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 7
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -80,3 +82,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gfy38")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xcwll")
 text = "Exit"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer/Start_Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit_Game" to="." method="_on_exit_game_pressed"]
