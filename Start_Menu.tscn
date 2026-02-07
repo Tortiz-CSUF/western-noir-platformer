@@ -1,10 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://blr4bmpnlswj5"]
+[gd_scene load_steps=6 format=3 uid="uid://blr4bmpnlswj5"]
 
 [ext_resource type="FontFile" uid="uid://m8luhfimbqq4" path="res://Assets/Fonts/PixelWesternRegular-8g70.ttf" id="1_wrxjg"]
 [ext_resource type="FontFile" uid="uid://ccrhyowxoc31a" path="res://Assets/Fonts/SpeedPxWatch-xRM4O.ttf" id="2_pbjr1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcwll"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbjr1"]
 bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfy38"]
+bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcwll"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,32 +49,34 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -31.0
-offset_right = 73.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.3984375
+anchor_top = 0.5787037
+anchor_right = 0.5842014
+anchor_bottom = 0.7962963
+theme_override_constants/separation = 15
+metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 7
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_pbjr1")
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_xcwll")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbjr1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gfy38")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xcwll")
 text = "Start Game"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 7
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_pbjr1")
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_xcwll")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbjr1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gfy38")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xcwll")
 text = "Exit"
 metadata/_edit_use_anchors_ = true
