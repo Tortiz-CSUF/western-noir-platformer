@@ -1,13 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://blr4bmpnlswj5"]
 
 [ext_resource type="FontFile" uid="uid://m8luhfimbqq4" path="res://Assets/Fonts/PixelWesternRegular-8g70.ttf" id="1_wrxjg"]
-[ext_resource type="Script" path="res://start_menu.gd" id="1_xcwll"]
+[ext_resource type="Script" uid="uid://dbx72d0kt65l3" path="res://start_menu.gd" id="1_xcwll"]
 [ext_resource type="Texture2D" uid="uid://cnte4dd0om6ae" path="res://Assets/Sprites/Environment/Western_bg.png" id="2_gfy38"]
 [ext_resource type="FontFile" uid="uid://ccrhyowxoc31a" path="res://Assets/Fonts/SpeedPxWatch-xRM4O.ttf" id="2_pbjr1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gfy38"]
 texture = ExtResource("2_gfy38")
-modulate_color = Color(0.23921569, 0.23921569, 0.23921569, 0.54901963)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbjr1"]
 bg_color = Color(1, 1, 1, 1)
@@ -17,14 +16,14 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfy38"]
-bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcwll"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
