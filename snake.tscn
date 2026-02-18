@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1o828t5ubvr8"]
+
+[ext_resource type="Texture2D" uid="uid://cnhnxu2rf18fa" path="res://Assets/Sprites/Enemy/snake_sheet.png" id="1_baghe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxkgb"]
+atlas = ExtResource("1_baghe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x2sd"]
+atlas = ExtResource("1_baghe")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olj5u"]
+atlas = ExtResource("1_baghe")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw1s1"]
+atlas = ExtResource("1_baghe")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej4wj"]
+atlas = ExtResource("1_baghe")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xox5r"]
+atlas = ExtResource("1_baghe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl5xi"]
+atlas = ExtResource("1_baghe")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmbwr"]
+atlas = ExtResource("1_baghe")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn80k"]
+atlas = ExtResource("1_baghe")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7y7h1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxkgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x2sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olj5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw1s1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej4wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xox5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl5xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmbwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn80k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Snake" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7y7h1")
+animation = &"walk"
+frame = 3
+frame_progress = 0.16051726
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
