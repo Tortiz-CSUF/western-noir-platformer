@@ -19,4 +19,18 @@ func _ready() -> void:
 
 
 func _on_hurt_body_entered(body: Node) -> void:
+	if not _can_damage:
+		return 
+	if body.is_in_group("player"):
+		_try_damage_player(body)
 	
+func _try_damage_player(player: Node) -> void:
+	#need to create a "take damage" funciton in player movement
+	if player.has_method("take_damage"):
+		player.call("take_damage", damage)
+	
+	#cooldown	
+	_can_damage = false
+	var t := get_tree().create_timer(damage_cooldown)
+	await t.timeout
+	_can_damage = true

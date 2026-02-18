@@ -8,6 +8,9 @@ extends CharacterBody2D
 @export var CAMERA_ZOOM: Vector2 = Vector2(3, 3)
 @export var CAMERA_SMOOTH_SPEED: float = 8.0
 
+#Health
+@export var HP: int = 10
+
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cam: Camera2D = $Camera2D
@@ -80,3 +83,7 @@ func _update_anim(dir: float) -> void:
 func freeze() -> void:
 	frozen = true
 	velocity = Vector2.ZERO
+
+func take_damage(amount: int) -> void:
+	HP -= amount
+	print("Player HP:", HP)
