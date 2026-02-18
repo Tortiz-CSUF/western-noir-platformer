@@ -16,8 +16,37 @@ func _ready() -> void:
 	# Hurtbox used to detect collision against player
 	hurtbox.body_entered.connect(_on_hurt_body_entered)
 	
+func _physics_process(delta: float) -> void:
+	_player = _find_player()
+	
+	var desired_vel_x := 0.0
+	
+	if _player != null:
+		var dist := global_position.distance_to(_player.global_position)
+		if dist <= aggro_range:
+			var dir := sign(_player.global_position.x - global_position.x)
+			desired_vel_x = dir * move_speed
+			
+			_play_walk(dir)
+		else: 
+			_play_idle()
+	else: 
+		_play_idle()
+	
+	velocity.x = desired_vel_x
+	
 
+func _play_idle() -> void:
+	
+func _play_walk(dir: float) -> void:
 
+func _find_player() -> Node2D:
+	var players := get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		return players[0] as Node2D
+	return null
+	
+	
 func _on_hurt_body_entered(body: Node) -> void:
 	if not _can_damage:
 		return 
