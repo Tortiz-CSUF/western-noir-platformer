@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1o828t5ubvr8"]
+[gd_scene load_steps=15 format=3 uid="uid://d1o828t5ubvr8"]
 
 [ext_resource type="Texture2D" uid="uid://cnhnxu2rf18fa" path="res://Assets/Sprites/Enemy/snake_sheet.png" id="1_baghe"]
+[ext_resource type="Script" uid="uid://blv6jjth308hs" path="res://snake.gd" id="1_gxkgb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxkgb"]
 atlas = ExtResource("1_baghe")
@@ -78,16 +79,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2x2sd"]
+radius = 9.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olj5u"]
+radius = 7.0
+
 [node name="Snake" type="CharacterBody2D"]
+script = ExtResource("1_gxkgb")
+move_speed = null
+aggro_range = null
+damage = null
+damage_cooldown = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7y7h1")
 animation = &"walk"
-frame = 3
-frame_progress = 0.16051726
+frame = 4
+frame_progress = 0.6922332
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2x2sd")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_olj5u")
