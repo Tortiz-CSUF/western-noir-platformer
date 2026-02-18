@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=4 uid="uid://c6xnf7a2c3a4i"]
+[gd_scene load_steps=29 format=4 uid="uid://c6xnf7a2c3a4i"]
 
 [ext_resource type="Texture2D" uid="uid://d4igqwd36b3tk" path="res://Assets/Sprites/Environment/enviornment_tiles.png" id="1_cnyu5"]
 [ext_resource type="Script" uid="uid://olgq1jurnyuh" path="res://Player_Movement.gd" id="1_hukh1"]
 [ext_resource type="Texture2D" uid="uid://cxtcyo22ktw38" path="res://Assets/Sprites/Player/cowboy_sheet.png" id="1_pwygt"]
 [ext_resource type="Script" uid="uid://c43py34vrwskl" path="res://moon_goal.gd" id="3_l2alr"]
+[ext_resource type="PackedScene" uid="uid://d1o828t5ubvr8" path="res://snake.tscn" id="5_wlv72"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hukh1"]
 atlas = ExtResource("1_pwygt")
@@ -273,7 +274,7 @@ func show_message(text: String) -> void:
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(140, 615)
 script = ExtResource("1_hukh1")
 MOVE_SPEED = 100.0
@@ -358,3 +359,7 @@ theme_override_font_sizes/font_size = 72
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Snake" parent="." instance=ExtResource("5_wlv72")]
+top_level = true
+position = Vector2(681, 616)

@@ -79,12 +79,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2x2sd"]
-radius = 9.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxkgb"]
+size = Vector2(15, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_olj5u"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x2sd"]
+size = Vector2(11, 12)
 
 [node name="Snake" type="CharacterBody2D"]
 script = ExtResource("1_gxkgb")
@@ -96,9 +95,11 @@ frame = 4
 frame_progress = 0.6922332
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_2x2sd")
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_gxkgb")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_olj5u")
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_2x2sd")

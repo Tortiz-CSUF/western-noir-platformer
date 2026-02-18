@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 			_play_idle()
 	else: 
 		_play_idle()
-	
+		
 	velocity.x = desired_vel_x
 	
 	#gravity logic
