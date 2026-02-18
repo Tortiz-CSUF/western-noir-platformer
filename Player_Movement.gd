@@ -11,6 +11,13 @@ extends CharacterBody2D
 #Health
 @export var HP: int = 10
 
+#Damage Indicator
+@export var flash_color: Color = Color(1, 0.2, 0.2, 1)
+@export var flash_time: float = 0.08
+var _flash_tween: Tween
+
+@onready var visuals: CanvasItem = $AnimatedSprite2D
+
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cam: Camera2D = $Camera2D
@@ -86,4 +93,16 @@ func freeze() -> void:
 
 func take_damage(amount: int) -> void:
 	HP -= amount
+	_flash_red()
 	print("Player HP:", HP)
+	
+func _flash_red() -> void:
+	#avoid stacking
+	if _flash_tween and _flash_tween.is_running():
+		_flash_tween.kill()
+		
+	#flash logic: flash -> normal
+	visuals.modulate = Color.WHITE
+	_flash_tween = create_tween()
+	_flash_tween.tween_property(visuals, "modulate", flash_color, 0.0)
+	_flash_tween.tween_property(visuals, "modulate", Color.WHITE, flash_time)

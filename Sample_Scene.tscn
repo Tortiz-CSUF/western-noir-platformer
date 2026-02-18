@@ -363,3 +363,4 @@ autowrap_mode = 2
 [node name="Snake" parent="." instance=ExtResource("5_wlv72")]
 top_level = true
 position = Vector2(681, 616)
+damage_cooldown = 1.5
