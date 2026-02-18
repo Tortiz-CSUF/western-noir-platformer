@@ -23,6 +23,17 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_player = _find_player()
 	
+	# cooldown
+	if not _can_damage:
+		_play_idle()
+		velocity.x = 0.0
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		else:
+			velocity.y = 0.0
+		move_and_slide()
+		return
+	
 	var desired_vel_x := 0.0
 	var dir_x := 0.0
 	
@@ -82,3 +93,4 @@ func _try_damage_player(player: Node) -> void:
 	var t := get_tree().create_timer(damage_cooldown)
 	await t.timeout
 	_can_damage = true
+	
