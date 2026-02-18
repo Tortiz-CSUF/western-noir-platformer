@@ -83,9 +83,11 @@ animations = [{
 size = Vector2(15, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2x2sd"]
-size = Vector2(11, 12)
+size = Vector2(12, 12)
 
 [node name="Snake" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_gxkgb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -99,7 +101,8 @@ position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_gxkgb")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1.5, 1)
+position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_2x2sd")

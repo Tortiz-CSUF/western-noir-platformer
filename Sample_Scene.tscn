@@ -248,7 +248,8 @@ texture = ExtResource("1_pwygt")
 3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.0915327, -8, 5.9900074, -8, 6.0915318, 7.0052624, -5.786957, 7.1067877)
 
 [sub_resource type="TileSet" id="TileSet_hukh1"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_pwygt")
 sources/2 = SubResource("TileSetAtlasSource_ubipg")
 pattern_0 = SubResource("TileMapPattern_cnyu5")
@@ -276,10 +277,12 @@ func show_message(text: String) -> void:
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(140, 615)
+collision_mask = 6
 script = ExtResource("1_hukh1")
 MOVE_SPEED = 100.0
 JUMP_VELOCITY = -250.0
 CAMERA_ZOOM = Vector2(5, 5)
+flash_time = 1.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 10

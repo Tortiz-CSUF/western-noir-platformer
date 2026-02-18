@@ -30,6 +30,7 @@ func _ready() -> void:
 	cam.zoom = CAMERA_ZOOM
 	cam.position_smoothing_enabled = true
 	cam.position_smoothing_speed = CAMERA_SMOOTH_SPEED
+	print("PLAYER READY")
 	
 	
 

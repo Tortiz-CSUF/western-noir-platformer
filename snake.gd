@@ -66,6 +66,7 @@ func _find_player() -> Node2D:
 	
 	
 func _on_hurt_body_entered(body: Node) -> void:
+	print("HURTBOX ENTER:", body,name, " groups:", body.get_groups())
 	if not _can_damage:
 		return 
 	if body.is_in_group("player"):
