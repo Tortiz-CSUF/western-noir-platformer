@@ -86,7 +86,7 @@ func _on_hurt_body_entered(body: Node) -> void:
 func _try_damage_player(player: Node) -> void:
 	#need to create a "take damage" funciton in player movement
 	if player.has_method("take_damage"):
-		player.call("take_damage", damage)
+		player.call("take_damage", damage, global_position)
 	
 	#cooldown	
 	_can_damage = false

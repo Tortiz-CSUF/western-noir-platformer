@@ -16,6 +16,13 @@ extends CharacterBody2D
 @export var flash_time: float = 0.08
 var _flash_tween: Tween
 
+#Player Knockback on damage taken
+@export var knockback_force: float = 250.0
+@export var knockback_up_force: float = 150.0
+@export var knockback_time: float = 0.2
+
+var _is_knockback: bool = false
+
 @onready var visuals: CanvasItem = $AnimatedSprite2D
 
 
@@ -36,6 +43,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if _is_knockback:
+		move_and_slide()
+		return 
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -92,10 +103,26 @@ func freeze() -> void:
 	frozen = true
 	velocity = Vector2.ZERO
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, source_pos: Vector2) -> void:
 	HP -= amount
-	_flash_red()
 	print("Player HP:", HP)
+	
+	_apply_knockback(source_pos)
+	_flash_red()
+	
+func _apply_knockback(source_pos: Vector2) -> void:
+	_is_knockback = true
+	
+	#directional signal for knockback direction
+	var dir : int = signi(global_position.x - source_pos.x)
+	if dir == 0:
+		dir = 1
+		
+	velocity.x = dir * knockback_force
+	velocity.y = -knockback_up_force
+	
+	await get_tree().create_timer(knockback_time).timeout
+	_is_knockback = false
 	
 func _flash_red() -> void:
 	#avoid stacking
