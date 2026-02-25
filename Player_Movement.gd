@@ -8,9 +8,6 @@ extends CharacterBody2D
 @export var CAMERA_ZOOM: Vector2 = Vector2(3, 3)
 @export var CAMERA_SMOOTH_SPEED: float = 8.0
 
-#Health
-@export var HP: int = 10
-
 #Damage Indicator
 @export var flash_color: Color = Color(1, 0.2, 0.2, 1)
 @export var flash_time: float = 0.08
@@ -31,6 +28,13 @@ var _is_knockback: bool = false
 
 var frozen: bool = false
 
+#Helth Bar Widget
+signal hp_changed(current_hp: int, max_hp: int)
+@export var MAX_HP: int = 10
+#Health
+@export var HP: int = 10
+
+
 func _ready() -> void:
 	# camera follow and zoom for character
 	cam.enabled = true
@@ -39,8 +43,8 @@ func _ready() -> void:
 	cam.position_smoothing_speed = CAMERA_SMOOTH_SPEED
 	print("PLAYER READY")
 	
-	
-
+	HP = MAX_HP
+	hp_changed.emit(HP, MAX_HP)
 
 func _physics_process(delta: float) -> void:
 	if _is_knockback:
