@@ -376,8 +376,8 @@ damage_cooldown = 1.5
 [node name="HealthUI" type="CanvasLayer" parent="."]
 
 [node name="HealthWidget" parent="HealthUI" instance=ExtResource("6_00qm0")]
-offset_left = 99.0
-offset_top = 55.0
-offset_right = 139.0
-offset_bottom = 95.0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 72.0
 scale = Vector2(3, 3)

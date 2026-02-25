@@ -23,8 +23,8 @@ anchor_left = 0.1
 anchor_top = 0.325
 anchor_right = 0.3
 anchor_bottom = 1.1
-offset_left = 4.0
-offset_right = 4.0
+offset_left = 9.0
+offset_right = 9.0
 
 [node name="Fill" type="ColorRect" parent="BarClip"]
 layout_mode = 0
@@ -34,23 +34,26 @@ color = Color(0.74658525, 2.0094587e-06, 8.663535e-07, 1)
 
 [node name="Frame" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_right = 44.0
+offset_left = 9.0
+offset_right = 49.0
 offset_bottom = 48.0
 texture = SubResource("AtlasTexture_ajts1")
 stretch_mode = 4
 
-[node name="HP" type="Label" parent="."]
+[node name="HPtext" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.075
 anchor_top = 1.2
-anchor_right = 2.375
-anchor_bottom = 1.775
+anchor_right = 0.5304
+anchor_bottom = 1.34375
+offset_right = 73.784
+offset_bottom = 17.25
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.198, 0.25)
+scale = Vector2(0.3, 0.379)
 theme_override_fonts/font = ExtResource("3_qutkk")
+text = "HP: 5/5"
 horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true

@@ -2,6 +2,7 @@ extends Control
 
 @onready var bar_clip: Control = $BarClip
 @onready var fill: ColorRect = $BarClip/Fill
+@onready var hp_text: Label = $HPtext
 
 var _full_w: float
 var _full_h: float
@@ -23,6 +24,8 @@ func _ready() -> void:
 		return
 		
 	player.hp_changed.connect(_on_hp_changed)
+	_on_hp_changed(player.HP, player.MAX_HP)
+	
 	
 func _on_hp_changed(current_hp: int, max_hp: int) -> void:
 	var ratio := 0.0
@@ -37,3 +40,5 @@ func _on_hp_changed(current_hp: int, max_hp: int) -> void:
 	#bottom remains constant
 	fill.position.y = _full_h - new_h
 	fill.size = Vector2(_full_w, _full_h)
+	
+	hp_text.text = str("HP: ") + str(current_hp) + "/" + str(max_hp)
