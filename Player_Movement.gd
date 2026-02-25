@@ -111,6 +111,9 @@ func take_damage(amount: int, source_pos: Vector2) -> void:
 	HP -= amount
 	print("Player HP:", HP)
 	
+	hp_changed.emit(HP, MAX_HP)
+	print("EMIT hp_changed:", HP, "/", MAX_HP)
+	
 	_apply_knockback(source_pos)
 	_flash_red()
 	

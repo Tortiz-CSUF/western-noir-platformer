@@ -15,17 +15,18 @@ offset_bottom = 40.0
 script = ExtResource("1_ajts1")
 
 [node name="BarClip" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(8, 31)
 layout_mode = 1
-anchor_left = 0.125
+anchor_left = 0.1
 anchor_top = 0.325
-anchor_right = 0.275
-anchor_bottom = 1.075
+anchor_right = 0.3
+anchor_bottom = 1.1
 metadata/_edit_use_anchors_ = true
 
 [node name="Fill" type="ColorRect" parent="BarClip"]
 layout_mode = 0
-offset_left = -1.0
-offset_right = 7.0
+offset_right = 8.0
 offset_bottom = 31.0
 color = Color(0.74658525, 2.0094587e-06, 8.663535e-07, 1)
 
