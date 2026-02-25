@@ -13,7 +13,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_ajts1")
-player_path = null
 
 [node name="BarClip" type="Control" parent="."]
 layout_mode = 1
@@ -25,7 +24,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Fill" type="ColorRect" parent="BarClip"]
 layout_mode = 0
-offset_right = 6.0
+offset_left = -1.0
+offset_right = 7.0
 offset_bottom = 31.0
 color = Color(0.74658525, 2.0094587e-06, 8.663535e-07, 1)
 

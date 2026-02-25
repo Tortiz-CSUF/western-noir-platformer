@@ -1,7 +1,5 @@
 extends Control
 
-@export var player_path: NodePath
-
 @onready var bar_clip: Control = $BarClip
 @onready var fill: ColorRect = $BarClip/Fill
 
@@ -16,7 +14,7 @@ func _ready() -> void:
 	fill.position = Vector2(0, 0)
 	fill.size = Vector2(_full_w, _full_h)
 	
-	var player:= get_node_or_null(player_path)
+	var player:= get_tree().get_first_node_in_group("player")
 	if player == null:
 		push_warning("HealthWidget: player_path not set or player not found!")
 		return
@@ -24,7 +22,7 @@ func _ready() -> void:
 		push_warning("HealthWidget: Player is missing hp_changed signal!")
 		return
 		
-	player.hp_changed.connect(_on_hp_changed())
+	player.hp_changed.connect(_on_hp_changed)
 	
 func _on_hp_changed(current_hp: int, max_hp: int) -> void:
 	var ratio := 0.0
@@ -38,4 +36,4 @@ func _on_hp_changed(current_hp: int, max_hp: int) -> void:
 	
 	#bottom remains constant
 	fill.position.y = _full_h - new_h
-	fill.size.y = new_h
+	fill.size = Vector2(_full_w, _full_h)
